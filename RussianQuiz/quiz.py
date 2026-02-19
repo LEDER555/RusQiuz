@@ -1,6 +1,15 @@
 from tkinter import *
 from tkinter import ttk
 from PIL import Image, ImageTk
+import sys
+import os
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 points = 10
 
@@ -247,13 +256,12 @@ def show_main_menu():
 root = Tk()
 root.title("Russian Quiz")
 root.geometry("1024x600+430+200")
-root.iconbitmap(default="logo.ico")
 
-back_image = Image.open("./back.jpeg")
-opened_image = Image.open("./newlogo.png")
+root.iconbitmap(default=resource_path("logo.ico"))
+back_image = Image.open(resource_path("back.jpeg"))
+opened_image = Image.open(resource_path("newlogo.png"))
 logo = ImageTk.PhotoImage(opened_image)
 back = ImageTk.PhotoImage(back_image)
-
 background_label = Label(root, image=back)
 background_label.place(x=0, y=0, width=1, height=1)
 
