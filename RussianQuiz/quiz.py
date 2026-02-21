@@ -118,7 +118,7 @@ def select_answer(index):
 
 
 def question():
-    global selected_answer, hint_shown
+    global selected_answer, hint_count
     canvas.delete(ALL)
     canvas.create_image(0, 0, image=back, anchor="nw")
     canvas.create_text(512, 50, text=f"Вопрос {current_question + 1}:", font=("Arial", 20, "bold"), fill="grey26")
@@ -180,7 +180,7 @@ def check_answer():
         canvas.delete("result")
         canvas.create_text(512, 500, text="Выберите ответ!", font=("Arial", 16, "bold"), fill="white", tags="result")
         return
-
+    canvas.delete("result")
     canvas.delete("check_button")
     canvas.delete("hint_button")
     canvas.delete("hint")
@@ -195,6 +195,8 @@ def check_answer():
     else:
         correct_answer = quiz_data[current_question]["options"][correct_index]
         canvas.create_text(512, 400, text=f"Неправильно! Правильный ответ: {correct_answer}", font=("Arial", 14, "bold"), fill="#A60707", width=900, tags="result")
+        fact_text = quiz_data[current_question]["fact"]
+        canvas.create_text(512, 450, text=f"Факт: {fact_text}", font=("Arial", 13), fill="grey0", width=900, tags="result")
         points -= 10
 
     if current_question < len(quiz_data) - 1:
@@ -233,7 +235,7 @@ def rules():
 def about():
     canvas.delete(ALL)
     canvas.create_image(0, 0, image=back, anchor="nw")
-    canvas.create_text(512, 300, text="Сделано Трегубовым Александром из\nШколы № 149 имени Героя Российской Федерации А.И.Баранова", font=("Arial", 20, "bold"), fill="grey26")
+    canvas.create_text(512, 300, text="Программа сделана Трегубовым Александром Ивановичем,\nучеником 7Г класса,\nШколы № 149 имени Героя Российской Федерации А.И.Баранова,\nг.Самара", font=("Arial", 20, "bold"), fill="grey26")
     back_btn = ttk.Button(root, text="Назад", command=show_main_menu)
     canvas.create_window(950, 570, window=back_btn, anchor="se")
 
@@ -243,10 +245,11 @@ def show_main_menu():
     global btn, points
     canvas.delete(ALL)
     canvas.create_image(0, 0, image=back, anchor="nw")
-    canvas.create_text(512, 200, text="Добро пожаловать на квиз!", font=("Arial", 20, "bold"), fill="grey26")
+    canvas.create_text(512, 200, text="Игра - викторина", font=("Arial", 20, "bold"), fill="grey26")
+    canvas.create_text(512, 250, text="Угадай, о каком коренном народе России идет речь?", font=("Arial", 20, "bold"), fill="grey26")
     about_btn = ttk.Button(root, text="О программе", command=about)
     rules_btn = ttk.Button(root, text="Правила", command=rules)
-    btn = Button(root, text="Начать", command=click_button, font=("Arial", 12))
+    btn = Button(root, text="Начать викторину", command=click_button, font=("Arial", 12))
     canvas.create_window(950, 570, window=about_btn, anchor="se")
     canvas.create_window(74, 570, window=rules_btn, anchor="sw")
     canvas.create_window(512, 340, window=btn)
@@ -254,7 +257,7 @@ def show_main_menu():
 
 
 root = Tk()
-root.title("Russian Quiz")
+root.title("Интерактивная викторина о народах России - Компьютерная страна 2026")
 root.geometry("1024x600+430+200")
 
 root.iconbitmap(default=resource_path("logo.ico"))
@@ -270,13 +273,13 @@ canvas = Canvas(root, width=1024, height=600, highlightthickness=0)
 canvas.pack(fill="both", expand=True)
 
 canvas.create_image(0, 0, image=back, anchor="nw")
-
-canvas.create_text(512, 200, text="Добро пожаловать на квиз!", font=("Arial", 20, "bold"), fill="grey26")
+canvas.create_text(512, 200, text="Игра - викторина", font=("Arial", 20, "bold"), fill="grey26")
+canvas.create_text(512, 250, text="Угадай, о каком коренном народе России идет речь?", font=("Arial", 20, "bold"), fill="grey26")
 
 
 about_btn = ttk.Button(root, text="О программе", command=about)
 rules_btn = ttk.Button(root, text="Правила", command=rules)
-btn = Button(root, text="Начать", command=click_button, font=("Arial", 12))
+btn = Button(root, text="Начать викторину", command=click_button, font=("Arial", 15))
 
 
 canvas.create_window(950, 570, window=about_btn, anchor="se")
