@@ -1,3 +1,4 @@
+#https://github.com/LEDER555/RusQiuz/
 from tkinter import *
 from tkinter import ttk
 from PIL import Image, ImageTk
@@ -101,7 +102,7 @@ quiz_data = [
 current_question = 0
 hint_count = 0
 
-
+#https://github.com/LEDER555/RusQiuz/
 
 def get_ques():
     return quiz_data[current_question]["question"]
@@ -212,7 +213,7 @@ def check_answer():
             canvas.create_text(512, 510, text=f"Вы набрали: {points} из 100 баллов", font=("Arial", 16, "bold"), fill="grey26", tags="result")
             finish_btn = Button(root, text="Завершить квиз", font=("Arial", 12), command=show_main_menu)
             canvas.create_window(512, 550, window=finish_btn)
-
+#https://github.com/LEDER555/RusQiuz/
 
 def next_question():
     global current_question, points
@@ -239,7 +240,7 @@ def about():
     back_btn = ttk.Button(root, text="Назад", command=show_main_menu)
     canvas.create_window(950, 570, window=back_btn, anchor="se")
 
-
+#https://github.com/LEDER555/RusQiuz/
 
 def show_main_menu():
     global btn, points
@@ -267,21 +268,23 @@ logo = ImageTk.PhotoImage(opened_image)
 back = ImageTk.PhotoImage(back_image)
 background_label = Label(root, image=back)
 background_label.place(x=0, y=0, width=1, height=1)
-
-
+#https://github.com/LEDER555/RusQiuz/
+#https://github.com/LEDER555/RusQiuz/
+#https://github.com/LEDER555/RusQiuz/
+#https://github.com/LEDER555/RusQiuz/
 canvas = Canvas(root, width=1024, height=600, highlightthickness=0)
 canvas.pack(fill="both", expand=True)
-
+#https://github.com/LEDER555/RusQiuz/
 canvas.create_image(0, 0, image=back, anchor="nw")
 canvas.create_text(512, 200, text="Игра - викторина", font=("Arial", 20, "bold"), fill="grey26")
 canvas.create_text(512, 250, text="Угадай, о каком коренном народе России идет речь?", font=("Arial", 20, "bold"), fill="grey26")
-
-
+#https://github.com/LEDER555/RusQiuz/
+#https://github.com/LEDER555/RusQiuz/
 about_btn = ttk.Button(root, text="О программе", command=about)
 rules_btn = ttk.Button(root, text="Правила", command=rules)
 btn = Button(root, text="Начать викторину", command=click_button, font=("Arial", 15))
-
-
+#https://github.com/LEDER555/RusQiuz/
+#https://github.com/LEDER555/RusQiuz/
 canvas.create_window(950, 570, window=about_btn, anchor="se")
 canvas.create_window(74, 570, window=rules_btn, anchor="sw")
 canvas.create_window(512, 340, window=btn)
